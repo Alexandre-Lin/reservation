@@ -4,6 +4,7 @@ import com.project.reservation.controller.ReservationController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ public class ReservationControllerImpl implements ReservationController
 {
 	@Override
 	@Operation(summary = "Get planning",description = "Get all reservations")
+	@GetMapping(value = "/all")
 	public ResponseEntity<Boolean> getReservations()
 	{
 		return ResponseEntity.ok(true);
