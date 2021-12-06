@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ReservationPropositionDto
+public class ReservationFilterDto
 {
 	private String type;
 	
@@ -21,5 +21,11 @@ public class ReservationPropositionDto
 	
 	private Integer peopleNumber;
 	
-	private Integer roomId;
+	private Boolean needEcran;
+	
+	private Boolean needPieuvre;
+	
+	private Boolean needTableau;
+	
+	private Boolean needWebcam;
 }
