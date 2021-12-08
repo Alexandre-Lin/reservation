@@ -22,11 +22,11 @@ public class ReservationFilterDto
 	
 	private Integer peopleNumber;
 	
-	private Boolean needEcran;
-	
-	private Boolean needPieuvre;
-	
-	private Boolean needTableau;
-	
-	private Boolean needWebcam;
+	public Boolean fieldsAreNotNull()
+	{
+		return this.type != null &&
+				this.startHour != null &&
+				this.endHour != null &&
+				this.peopleNumber != null;
+	}
 }

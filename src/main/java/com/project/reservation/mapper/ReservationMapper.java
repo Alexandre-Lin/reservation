@@ -21,11 +21,13 @@ public interface ReservationMapper
 	List<ReservationConsulterDto> reservationsToReservationConsulterDtos(List<Reservation> reservations);
 	
 	@Mapping(source = "room.id", target = "roomId")
+	@Mapping(source = "room.roomName", target = "roomName")
 	ReservationPropositionDto reservationToReservationPropositionDto(Reservation reservation);
 	
 	@IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
 	List<ReservationPropositionDto> reservationsToReservationPropositionDtos(List<Reservation> reservations);
 	
 	@Mapping(source = "roomId", target = "room.id")
+	@Mapping(source = "roomName", target = "room.roomName")
 	Reservation reservationPropositionDtoToReservation(ReservationPropositionDto reservation);
 }

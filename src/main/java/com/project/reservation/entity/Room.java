@@ -11,7 +11,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "reservation")
+@Table(name = "room")
 public class Room
 {
 	@Id

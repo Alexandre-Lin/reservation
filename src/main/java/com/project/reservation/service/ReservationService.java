@@ -31,6 +31,7 @@ public interface ReservationService
 	 * P.S.: due to COVID reasons, room will not be available one hour before a reservation,
 	 * capacity of a room will be only at 70% of its maximum capacity,
 	 * rooms can be available from 8am to 8pm all the week except weekend
+	 * there are 4 "pieuvres", 5 screens, 4 webcams and 2 boards that are amovible
 	 *
 	 * @param reservationFilterDto the filter to use
 	 *

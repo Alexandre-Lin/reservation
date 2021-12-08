@@ -2,6 +2,7 @@ package com.project.reservation.entity;
 
 import com.project.reservation.enums.ReservationType;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -42,6 +43,30 @@ public class Reservation
 	@Getter
 	@Setter
 	private Integer peopleNumber;
+	
+	@Column(name = "use_extra_ecran")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter
+	@Setter
+	private Boolean useExtraEcran;
+	
+	@Column(name = "use_extra_pieuvre")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter
+	@Setter
+	private Boolean useExtraPieuvre;
+	
+	@Column(name = "use_extra_tableau")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter
+	@Setter
+	private Boolean useExtraTableau;
+	
+	@Column(name = "use_extra_webcam")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter
+	@Setter
+	private Boolean useExtraWebcam;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_room_id", referencedColumnName = "id", nullable = false)
