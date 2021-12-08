@@ -27,5 +27,5 @@ public interface ReservationMapper
 	List<ReservationPropositionDto> reservationsToReservationPropositionDtos(List<Reservation> reservations);
 	
 	@Mapping(source = "roomId", target = "room.id")
-	Reservation eservationPropositionDtoToReservation(ReservationPropositionDto reservation);
+	Reservation reservationPropositionDtoToReservation(ReservationPropositionDto reservation);
 }

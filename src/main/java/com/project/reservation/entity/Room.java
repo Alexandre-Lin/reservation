@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 
 @Entity
@@ -42,7 +43,6 @@ public class Room
 	@Setter
 	private Boolean hasPieuvre;
 	
-	
 	@Column(name = "specification_tableau")
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	@Getter
@@ -54,4 +54,21 @@ public class Room
 	@Getter
 	@Setter
 	private Boolean hasWebcam;
+	
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Room room = (Room) o;
+		return Objects.equals(id, room.id) && Objects.equals(roomName, room.roomName) && Objects.equals(capacity, room.capacity) && Objects
+				.equals(hasEcran, room.hasEcran) && Objects.equals(hasPieuvre, room.hasPieuvre) && Objects.equals(hasTableau, room.hasTableau) && Objects
+				.equals(hasWebcam, room.hasWebcam);
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(id, roomName, capacity, hasEcran, hasPieuvre, hasTableau, hasWebcam);
+	}
 }

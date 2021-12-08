@@ -3,6 +3,10 @@ package com.project.reservation.service.impl;
 import com.project.reservation.dto.ReservationConsulterDto;
 import com.project.reservation.dto.ReservationFilterDto;
 import com.project.reservation.dto.ReservationPropositionDto;
+import com.project.reservation.enums.ReservationType;
+import com.project.reservation.exception.ReservationAlreadyExistsException;
+import com.project.reservation.exception.ReservationArgumentMethodNotValidException;
+import com.project.reservation.exception.ReservationTypeNotFoundException;
 import com.project.reservation.mapper.ReservationMapper;
 import com.project.reservation.repository.ReservationRepository;
 import com.project.reservation.repository.RoomRepository;
@@ -42,15 +46,32 @@ public class ReservationServiceImpl implements ReservationService
 	
 	@Override
 	@Transactional
-	public List<ReservationPropositionDto> getPropositions(ReservationFilterDto reservationFilterDto)
+	public List<ReservationPropositionDto> getPropositions(ReservationFilterDto reservationFilterDto) throws ReservationArgumentMethodNotValidException,
+			ReservationTypeNotFoundException
 	{
 		return null;
 	}
 	
 	@Override
 	@Transactional
-	public Boolean saveReservation(ReservationPropositionDto reservationPropositionDto)
+	public Boolean saveReservation(ReservationPropositionDto reservationPropositionDto) throws ReservationAlreadyExistsException,
+			ReservationArgumentMethodNotValidException, ReservationTypeNotFoundException
 	{
-		return null;
+		if (!reservationPropositionDto.fieldsAreNotNull())
+			throw new ReservationArgumentMethodNotValidException("The proposition for saving a reservation has empty fields");
+		
+		if (!ReservationType.isValidType(reservationPropositionDto.getType().name()))
+			throw new ReservationTypeNotFoundException("Invalid type");
+		
+		try
+		{
+			this.reservationRepository.save(this.reservationMapper.reservationPropositionDtoToReservation(reservationPropositionDto));
+		}
+		catch (Exception exception)
+		{
+			throw new ReservationAlreadyExistsException(exception.getMessage());
+		}
+		
+		return true;
 	}
 }

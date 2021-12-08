@@ -1,9 +1,11 @@
 package com.project.reservation.entity;
 
+import com.project.reservation.enums.ReservationType;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 
 @Entity
@@ -21,9 +23,10 @@ public class Reservation
 	private Integer id;
 	
 	@Column(name = "type", nullable = false)
+	@Enumerated(EnumType.STRING)
 	@Getter
 	@Setter
-	private String type;
+	private ReservationType type;
 	
 	@Column(name = "hour_reservation_start", nullable = false)
 	@Getter
@@ -45,4 +48,20 @@ public class Reservation
 	@Getter
 	@Setter
 	private Room room;
+	
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Reservation that = (Reservation) o;
+		return Objects.equals(id, that.id) && type == that.type && Objects.equals(startHour, that.startHour) && Objects.equals(endHour, that.endHour) && Objects
+				.equals(peopleNumber, that.peopleNumber) && Objects.equals(room, that.room);
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(id, type, startHour, endHour, peopleNumber, room);
+	}
 }

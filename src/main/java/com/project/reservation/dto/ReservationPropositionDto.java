@@ -1,4 +1,5 @@
 package com.project.reservation.dto;
+import com.project.reservation.enums.ReservationType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 public class ReservationPropositionDto
 {
-	private String type;
+	private ReservationType type;
 	
 	private LocalDateTime startHour;
 	
@@ -22,4 +23,13 @@ public class ReservationPropositionDto
 	private Integer peopleNumber;
 	
 	private Integer roomId;
+	
+	public Boolean fieldsAreNotNull()
+	{
+		return this.type != null &&
+				this.startHour != null &&
+				this.endHour != null &&
+				this.peopleNumber != null &&
+				this.roomId != null;
+	}
 }

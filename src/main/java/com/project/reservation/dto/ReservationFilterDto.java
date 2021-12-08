@@ -1,4 +1,5 @@
 package com.project.reservation.dto;
+import com.project.reservation.enums.ReservationType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 public class ReservationFilterDto
 {
-	private String type;
+	private ReservationType type;
 	
 	private LocalDateTime startHour;
 	

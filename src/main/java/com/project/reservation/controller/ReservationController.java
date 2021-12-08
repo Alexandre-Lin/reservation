@@ -3,6 +3,9 @@ package com.project.reservation.controller;
 import com.project.reservation.dto.ReservationConsulterDto;
 import com.project.reservation.dto.ReservationFilterDto;
 import com.project.reservation.dto.ReservationPropositionDto;
+import com.project.reservation.exception.ReservationAlreadyExistsException;
+import com.project.reservation.exception.ReservationArgumentMethodNotValidException;
+import com.project.reservation.exception.ReservationTypeNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -28,7 +31,8 @@ public interface ReservationController
 	ResponseEntity<List<ReservationPropositionDto>> getPropositions(
 			@RequestBody
 					ReservationFilterDto reservationFilterDto
-	);
+	) throws ReservationArgumentMethodNotValidException,
+			ReservationTypeNotFoundException;
 	
 	/**
 	 * To save a reservation to the db
@@ -40,5 +44,6 @@ public interface ReservationController
 	ResponseEntity<Boolean> getDesiredProposition(
 			@RequestBody
 					ReservationPropositionDto reservationPropositionDto
-	);
+	) throws ReservationAlreadyExistsException,
+			ReservationArgumentMethodNotValidException, ReservationTypeNotFoundException;
 }
