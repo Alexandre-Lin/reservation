@@ -1,16 +1,14 @@
 package com.project.reservation.dto;
 
 import com.project.reservation.enums.ReservationType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Getter
 @Setter
 public class ReservationConsulterDto
