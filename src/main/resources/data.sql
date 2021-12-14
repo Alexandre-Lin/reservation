@@ -17,8 +17,8 @@ CREATE table IF NOT EXISTS reservation
 (
     id                     INT PRIMARY KEY NOT NULL,
     type                   VARCHAR(100)    NOT NULL,
-    hour_reservation_start DATE            NOT NULL,
-    hour_reservation_end   DATE            NOT NULL,
+    hour_reservation_start TIMESTAMP       NOT NULL,
+    hour_reservation_end   TIMESTAMP       NOT NULL,
     people_number          INT             NOT NULL,
     use_extra_ecran        TINYINT(2)      NOT NULL,
     use_extra_pieuvre      TINYINT(2)      NOT NULL,
